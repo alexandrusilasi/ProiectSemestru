@@ -1,0 +1,50 @@
+﻿@page
+@model ProiectSemestru.Pages.Visits.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Visit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Visit.Id" />
+            <div class="form-group">
+                <label asp-for="Visit.date" class="control-label"></label>
+                <input asp-for="Visit.date" class="form-control" />
+                <span asp-validation-for="Visit.date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Visit.number" class="control-label"></label>
+                <input asp-for="Visit.number" class="form-control" />
+                <span asp-validation-for="Visit.number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Visit.ConsultationID" class="control-label">Consult</label>
+                <select asp-for="Visit.ConsultationID" class="form-control" asp-items="ViewBag.ConsultationID"></select>
+                <span asp-validation-for="Visit.ConsultationID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Visit.DoctorID" class="control-label">Doctor</label>
+                <select asp-for="Visit.DoctorID" class="form-control" asp-items="ViewBag.DoctorID"></select>
+                <span asp-validation-for="Visit.DoctorID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
