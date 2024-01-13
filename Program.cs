@@ -10,6 +10,7 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AuthorizeFolder("/Doctors");
     options.Conventions.AuthorizeFolder("/Patients");
     options.Conventions.AuthorizeFolder("/Visits");
+    options.Conventions.AuthorizeFolder("/Prescriptions");
 });
 
 // Add services to the container.

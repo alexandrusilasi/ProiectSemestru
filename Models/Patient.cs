@@ -14,5 +14,7 @@
         public string cnp { get; set; }
 
         public ICollection<Visit>? Visits { get; set; }
+
+        public string FullName => $"{firstName} {lastName}";
     }
 }

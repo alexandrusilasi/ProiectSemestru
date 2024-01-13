@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ProiectSemestru.Data;
 using ProiectSemestru.Models;
 
-namespace ProiectSemestru.Pages.Visits
+namespace ProiectSemestru.Pages.Prescriptions
 {
     public class DetailsModel : PageModel
     {
@@ -19,27 +19,23 @@ namespace ProiectSemestru.Pages.Visits
             _context = context;
         }
 
-      public Visit Visit { get; set; } = default!; 
+      public Prescription Prescription { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Visit == null)
+            if (id == null || _context.Prescription == null)
             {
                 return NotFound();
             }
 
-            var visit = await _context.Visit
-                .Include(v => v.Consultation)
-                .Include(v => v.Doctor)
-                .Include(v => v.Patient)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (visit == null)
+            var prescription = await _context.Prescription.FirstOrDefaultAsync(m => m.Id == id);
+            if (prescription == null)
             {
                 return NotFound();
             }
             else 
             {
-                Visit = visit;
+                Prescription = prescription;
             }
             return Page();
         }

@@ -20,5 +20,9 @@ namespace ProiectSemestru.Models
 
         public int? DoctorID { get; set; }
         public Doctor? Doctor { get; set; }
+
+        public ICollection<Prescription>? Prescriptions { get; set; }
+
+        public string DisplayInfo => $"{date.ToShortDateString()} - {Patient?.firstName} {Patient?.lastName}";
     }
 }
